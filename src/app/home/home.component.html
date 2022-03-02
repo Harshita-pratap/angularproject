@@ -1,1 +1,11 @@
-<app-loginform></app-loginform>
+<div class="container">
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Form</h3>
+<app-loginform (Data)="getInfo($event)"></app-loginform>
+</div>
+<div class="col-sm-6" >
+<app-users [listData]="defaultList"></app-users>
+</div>
+</div>
+</div>

@@ -1,0 +1,23 @@
+<div class="col-md-8 mt-4 mb-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>College</th>
+          <th>Degree</th>
+          <th>Specialization</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let item of listData">
+          <td>{{item.name}}</td>
+          <td>{{item.college}}</td>
+          <td>{{item.degree}}</td>
+          <td>{{item.Specialization}}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+

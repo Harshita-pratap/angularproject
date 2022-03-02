@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild, Output, EventEmitter, ElementRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-loginform',
   templateUrl: './loginform.component.html',
@@ -8,24 +8,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginformComponent implements OnInit {
      
-  userForm!: FormGroup;
-  listData:any;
-
-  constructor(private fb: FormBuilder) {
-    this.listData=[];
-    this.userForm = this.fb.group({
-      name:['',Validators.required],
-      college:['',Validators.required],
-      degree:['',Validators.required],
-      Specialization: ['',Validators.required]
-    })
-   }
+  @ViewChild('f') myform!: ElementRef | any;
+  
+  userData = {
+    name:'',
+    college:'',
+    degree:'',
+    Specialization:''
+  }
+  
+  @Output() Data = new EventEmitter<{name: string, college: string, degree:string, Specialization:string}>()
+  constructor(){}
+    
+   
    addItem(){
-    this.listData.push(this.userForm.value);
+   this.Data.emit(this.userData);
+   
     
   }
   reset(){
-    this.userForm.reset();
+    this.myform.reset();
   }
 
  
